@@ -171,3 +171,167 @@ https://newleftreview.org/issues/ii1/articles/franco-moretti-conjectures-on-worl
 * Zweite Vorlesung (S. 6 - 11) in: Heinrich Blücher. Why and How We Study Philosophy. https://www.bard.edu/library/pdfs/bluecher/Why%20and%20How%20We%20Study%20Philosophy%20-%20Bl%C3%BCcher%20Archives%20PDF.pdf
 
 ## Sitzung am 14.11.
+
+Diese Sitzung geht es darum zu verstehen, wie Verfahren zur automatischen Textverarbeitung funktionieren und welche Abstriche dabei in Kauf genommen werden. Außerdem beschäftigen wir uns mit Voyant Tools, einer Software zur automatischen Textanalyse.
+
+Weiterführende Literatur und Ressourcen:
+
+* In OLAT finden sich Vorlesungen von Heinrich Blücher zum Herumprobieren.
+* Für alle, die sich dem Thema programmierend nähern möchten: https://pythonhumanities.com/python-for-dh-course/ 
+* Weitere Texte für eigene Versuche finden sich bspw. im [Deutschen Textarchiv](https://www.deutschestextarchiv.de), z. B. Immanuel Kants ["Beantwortung der Frage: Was ist Aufklärung?"](https://www.deutschestextarchiv.de/book/show/16167)
+
+
+### Grundlagen der automatischen Textverarbeitung
+
+Texte werden im Computer als eine Zeichenkette oder eine Folge von Zeichen (*string*) repräsentiert. Dieser Ansatz ermöglicht es, Texte in digitaler Form zu speichern, zu verarbeiten und anzuzeigen. Jeder Buchstabe, Satzzeichen, Zahl oder Sonderzeichen, die in einem Text vorkommen, wird dabei durch eine spezielle Codierung abgebildet.
+
+Eine der häufigsten Codierungen für die Repräsentation von Texten ist die ASCII-Codierung (American Standard Code for Information Interchange). Hierbei werden Buchstaben, Zahlen, Sonderzeichen und Steuerzeichen durch jeweils 7 oder 8 Bits dargestellt. Das bedeutet, dass jedem Zeichen eine eindeutige Binärsequenz zugeordnet wird, was es dem Computer ermöglicht, die Zeichen korrekt zu interpretieren und anzuzeigen.
+
+![ASCII-Tabelle aus MIL-STD-188-100 (1972)](img/USASCII_code_chart.png "ASCII-Tabelle aus MIL-STD-188-100 (1972)")
+
+**Beispiel:** Der String *Hallo* würde in ASCII als `01001000 01100001 01101100 01101100 01101111 00100001` repräsentiert werden. 
+
+Mit der Zeit wurden weitere (und komplexere) Codierungsstandards entwickelt, um Zeichen aus verschiedenen Sprachen und Schriften darstellen zu können. Zum Beispiel ermöglicht Unicode die Darstellung einer Vielzahl von Schriftsystemen, darunter auch komplexere Schriften wie chinesische, arabische und indische Schriften. Unicode erweitert die ASCII-Codierung und weist jedem Zeichen eine eindeutige Nummer zu, wodurch es möglich wird, Texte in verschiedenen Sprachen und Schriftsystemen auf Computern korrekt wiederzugeben.
+
+**Beispiel:** Angenommen, wir haben den Text "こんにちは" in der japanischen Sprache, was "Konnichiwa" auf Englisch bedeutet. Jedes Zeichen in diesem Text wird gemäß der Unicode-Codierung einer spezifischen Nummer zugeordnet, die dann in binärer Form im Computer gespeichert wird. Für das Beispiel "こんにちは" würden die einzelnen Zeichen gemäß Unicode wie folgt dargestellt werden:
+
+* "こ" entspricht der Unicode-Nummer U+3053
+* "ん" entspricht der Unicode-Nummer U+3093
+* "に" entspricht der Unicode-Nummer U+306B
+* "ち" entspricht der Unicode-Nummer U+3061
+* "は" entspricht der Unicode-Nummer U+306F
+
+Die Repräsentation von Texten als Zeichenketten im Computer bildet die Grundlage für Textverarbeitungsanwendungen, Suchmaschinen, Datenbanken und viele weitere digitale Anwendungen im Bereich der Geisteswissenschaften. Sie ermöglicht die Speicherung und Analyse von Texten in digitaler Form, was die Arbeit mit großen Textmengen und die Durchführung komplexer Textanalysen erleichtert.
+
+#### Dokument und Korpus
+
+Ein *Dokument* repräsentiert eine einzelne Einheit von Text, die als Ganzes betrachtet wird. Es kann sich dabei um einen Artikel, einen Blogbeitrag, eine E-Mail, einen Abschnitt eines Buches oder eine andere Texteinheit handeln. In der Textanalyse wird ein Dokument oft als die kleinste verarbeitbare Einheit betrachtet. Analysen, wie die Extraktion von Schlüsselwörtern, Sentimentanalyse oder Themenmodellierung, können auf der Ebene einzelner Dokumente durchgeführt werden.
+
+Ein *Korpus* bezeichnet eine Sammlung von Textdokumenten. Es ist eine größere Menge von Texten, die für eine bestimmte Analyse oder Forschungszwecke zusammengestellt wurde. Korpora dienen als Grundlage für umfassendere Textanalysen. Sie ermöglichen die Extraktion von Mustern, Trends und Informationen auf der Ebene der gesamten Textsammlung. Korpora können aus Texten zu einem bestimmten Thema, aus einer bestimmten Quelle oder aus verschiedenen Genres bestehen und werden in verschiedenen Bereichen wie maschinelles Lernen, Sprachverarbeitung und Textlinguistik verwendet.
+
+Die Grenzen zwischen *Dokument* und *Korpus* sind nicht zwingend fixiert: Wir können Blüchers Vorlesung "Why and How We Study Philosophy" als ein Dokument *oder* als einen Korpus (bestehend aus einer Reihe von Dokumenten, den Vorlesungen) betrachten. 
+
+#### Stopwords
+
+**Beispiel:** Wir betrachten den folgenden Textausschnitt von Heinrich Blücher: 
+
+> In philosophy we have no right to throw out one erroneous answer if that answer has quality (human experience), and since in philosophy we are concerned with the idea itself (for example: philosophy is concerned with the idea of God, religion with the existence of God) and how it was possible for man to arrive at that idea or answer at all, we have always to look and to inquire again. So in discussing the situation we now find ourselves in and how it came about and man's changed position in the world, we have to look back at how man lived up to 1800 and have to ask: How was it possible and how did it happen that man believed in God almost up to 1800 and then suddenly stopped--replacing this dropped belief with a merely negative belief that God did not exist. (Heinrich Blücher: Why and How We Study Philosophy)
+
+Durch die Entfernung von *stopwords* wird aus dem Ausgangs- der folgende Text:
+
+> philosophy throw erroneous answer answer quality (human experience), philosophy concerned idea philosophy concerned idea God, religion existence God) man arrive idea answer inquire discussing situation man's changed position man lived 1800 happen man believed God 1800 suddenly stopped--replacing dropped belief negative belief God exist.
+
+Die folgenden *stopwords* wurden in diesem Falle entfernt:
+
+> in we have no right to out one if that has and since are with the itself for example is of how it was possible at or all always look again so now find ourselves came about world back up ask did almost then this a merely not
+
+---
+
+*Stopwords* sind häufig vorkommende Wörter in einer Sprache, die jedoch wenig semantische Bedeutung tragen. Beispiele für Stopwords im Englischen sind "and", "the", "is", usw. In der automatischen Textverarbeitung werden diese Wörter oft als Rauschen betrachtet, da sie wenig zur inhaltlichen Analyse beitragen, aber viel Speicherplatz und Rechenzeit in Anspruch nehmen können.
+
+Die Funktion von *stopword removal* besteht darin, diese häufigen Wörter aus einem Text zu entfernen, um die Relevanz der verbleibenden Wörter zu erhöhen. Dieser Prozess kann durch Filtern einer vordefinierten Liste von Stopwords oder durch Analyse der Häufigkeit von Wörtern im Kontext eines spezifischen Textkorpus erfolgen. Durch das Entfernen von Stopwords können Textanalysen präziser werden, da die Betonung auf bedeutungsvolleren Wörtern liegt. Dies ist besonders nützlich in den digitalen Geisteswissenschaften, wo die inhaltliche Interpretation von Texten im Vordergrund steht und Rauschen in Form von häufigen, aber wenig aussagekräftigen Wörtern vermieden werden soll.
+
+Fragen:
+
+1. Wer legt fest, was ein *stopword* ist? Welche Konsequenzen hat das?
+2. Was verbessert *stopword removal*? Was wird dadurch schlechter?
+
+#### Stemming und lemmatization
+
+**Beispiel:** Wir betrachten (erneut) den folgenden Textausschnitt von Heinrich Blücher: 
+
+> In philosophy we have no right to throw out one erroneous answer if that answer has quality (human experience), and since in philosophy we are concerned with the idea itself (for example: philosophy is concerned with the idea of God, religion with the existence of God) and how it was possible for man to arrive at that idea or answer at all, we have always to look and to inquire again. So in discussing the situation we now find ourselves in and how it came about and man's changed position in the world, we have to look back at how man lived up to 1800 and have to ask: How was it possible and how did it happen that man believed in God almost up to 1800 and then suddenly stopped--replacing this dropped belief with a merely negative belief that God did not exist. (Heinrich Blücher: Why and How We Study Philosophy)
+
+Durch *stemming* wird daraus:
+
+> In philosophi we have no right to throw out one erron answer if that answer ha qualiti ( human experi ), and sinc in philosophi we are concern with the idea itself ( for exampl : philosophi is concern with the idea of God , religion with the exist of God ) and how it wa possibl for man to arriv at that idea or answer at all , we have alway to look and to inquir again . So in discuss the situat we now find ourselv in and how it came about and man ' s chang posit in the world , we have to look back at how man live up to 1800 and have to ask : How wa it possibl and how did it happen that man believ in God almost up to 1800 and then suddenli stop -- replac thi drop belief with a mere neg belief that God did not exist .
+
+Durch *lemmatization*:
+
+>  in philosophy we have no right to throw out one erroneous answer if that answer have quality ( human experience ) , and since in philosophy we be concern with the idea itself ( for example : philosophy be concern with the idea of God , religion with the existence of God ) and how it be possible for man to arrive at that idea or answer at all , we have always to look and to inquire again . so in discuss the situation we now find ourselves in and how it come about and man 's change position in the world , we have to look back at how man live up to 1800 and have to ask : how be it possible and how do it happen that man believe in God almost up to 1800 and then suddenly stop -- replace this drop belief with a merely negative belief that God do not exist .
+
+--- 
+
+*Stemming* und *Lemmatisierung* sind zwei Techniken der Textnormalisierung in der linguistischen Verarbeitung von Texten. Beide Methoden zielen darauf ab, Wörter auf ihre Grundformen zu reduzieren, um Textanalysen zu verbessern.
+
+*Stemming* ist ein Verfahren, bei dem Wörter auf ihren sogenannten Stamm (oder Wortstamm) reduziert werden, indem übliche Suffixe entfernt werden. Dies bedeutet, dass verschiedene grammatische Formen eines Wortes auf denselben Stamm zurückgeführt werden, unabhängig von ihrer spezifischen Flexion. Das Wort "running" wird durch Stemming auf den Stamm "run" reduziert.
+
+Im Gegensatz dazu versucht die *Lemmatisierung*, Wörter auf ihre lexikalische Grundform (Lemma) zurückzuführen. Dabei werden nicht nur grammatische Formen, sondern auch die semantische Bedeutung berücksichtigt. Das Ergebnis ist ein echtes Wort (Lemma), das im Wörterbuch zu finden ist. Das Wort "better" wird durch Lemmatisierung auf die Lemme "good" reduziert.
+
+In beiden Fällen helfen *Stemming* und *Lemmatisierung* dabei, die Vielfalt der Formen eines Wortes zu reduzieren, was besonders in der Textanalyse und maschinellen Verarbeitung natürlicher Sprache (NLP) nützlich ist: Es erleichtert die Vergleichbarkeit von Wörtern und verbessert die Extraktion von Schlüsselinformationen aus Texten. Stemming ist dabei weniger aufwendig, während Lemmatisierung in der Regel präzisere Ergebnisse liefert.
+
+#### Bag-of-words und n-Grame
+
+**Beispiel:** Wir betrachten (schon wieder...) den folgenden Textausschnitt von Heinrich Blücher: 
+
+> In philosophy we have no right to throw out one erroneous answer if that answer has quality (human experience), and since in philosophy we are concerned with the idea itself (for example: philosophy is concerned with the idea of God, religion with the existence of God) and how it was possible for man to arrive at that idea or answer at all, we have always to look and to inquire again. So in discussing the situation we now find ourselves in and how it came about and man's changed position in the world, we have to look back at how man lived up to 1800 and have to ask: How was it possible and how did it happen that man believed in God almost up to 1800 and then suddenly stopped--replacing this dropped belief with a merely negative belief that God did not exist. (Heinrich Blücher: Why and How We Study Philosophy)
+
+Daraus wird als *bag-of-words*:
+
+| to | and | in | we | have | how | the | be | it | that | ... |
+|----|-----|----|----|------|-----|-----|----|----|------|-----|
+| 8  |  8  | 6  | 5  | 5    | 5   | 5   | 4  | 4  | 4    | ... |
+
+Als Darstellung mit *2-Gramm*en:
+
+| we have | and how | with the | up to | how it | in philosophy | ... |
+|---------|---------|----------|-------|--------|---------------|-----|
+| 3       | 3       | 3        | 2     | 2      | 2             | ... |
+
+---
+
+*Bag-of-Words* ist eine Art der Textrepräsentation in der maschinellen Textverarbeitung. Bei dieser Methode wird ein Text als eine "Tasche" (englisch: bag) von Wörtern betrachtet, wobei die Reihenfolge der Wörter ignoriert wird, und nur die Häufigkeit der Wörter im Text berücksichtigt wird. Das bedeutet, dass die Information über die Wortreihenfolge im Text verloren geht, und der Fokus allein auf dem Auftreten der Wörter liegt. Diese Darstellung wird häufig für Textklassifikation, Clustering und andere Textanalysen verwendet.
+
+Ein *n-Gramm* ist in der Sprachverarbeitung eine aufeinanderfolgende Sequenz von n Elementen (normalerweise Wörtern), die aus einem Text extrahiert werden. Diese Elemente können Buchstaben, Silben, Wörter oder sogar ganze Sätze sein, abhängig vom Kontext der Analyse. N steht dabei für die Anzahl der Elemente in einem n-Gramm.
+
+#### Häufigkeit und Dichte
+
+**Beispiel:** Wir betrachten (schon wieder...) den folgenden Textausschnitt von Heinrich Blücher: 
+
+> In philosophy we have no right to throw out one erroneous answer if that answer has quality (human experience), and since in philosophy we are concerned with the idea itself (for example: philosophy is concerned with the idea of God, religion with the existence of God) and how it was possible for man to arrive at that idea or answer at all, we have always to look and to inquire again. So in discussing the situation we now find ourselves in and how it came about and man's changed position in the world, we have to look back at how man lived up to 1800 and have to ask: How was it possible and how did it happen that man believed in God almost up to 1800 and then suddenly stopped--replacing this dropped belief with a merely negative belief that God did not exist. (Heinrich Blücher: Why and How We Study Philosophy)
+
+Das Wort *god* hat eine Worthäufigkeit `= 4`, die Dichte des Texts beträgt `0,545`. 
+
+--- 
+
+Die *Worthäufigkeit* (Term Frequency, TF) misst, wie oft ein bestimmtes Wort in einem Dokument erscheint, im Verhältnis zur Gesamtanzahl der Wörter in diesem Dokument. Ein höherer TF-Wert deutet darauf hin, dass das Wort im Dokument häufig vorkommt und kann als Indikator für die Relevanz des Worts im Kontext des spezifischen Dokuments dienen. Die TF-Metrik ist grundlegend für Bag-of-Words-Modelle und Textanalyseanwendungen.
+
+Die *Wortschatzdichte* (Vocabulary Density) bezieht sich auf das Verhältnis der einzigartigen Wörter zur Gesamtanzahl der Wörter in einem Dokument. Ein Dokument mit einer höheren Wortschatzdichte enthält mehr unterschiedliche Wörter und zeigt somit eine größere sprachliche Vielfalt. Dies kann auf die inhaltliche Komplexität oder Spezifität eines Textes hinweisen und ist in der Textanalyse wichtig, um die Varianz des Wortschatzes in verschiedenen Dokumenten zu bewerten.
+
+
+### Tool: Voyant
+
+![Voyant Tools](img/voyant_tools.png)
+
+
+### Tool: Google Books N-Gram Viewer
+
+Der [Google Books Ngram Viewer](https://books.google.com/ngrams/) ist ein leistungsstarkes Online-Tool, das es Nutzern ermöglicht, die Häufigkeit des Vorkommens bestimmter Wörter oder Phrasen in der Google-Büchersammlung über einen festgelegten Zeitraum zu analysieren. Im folgenden Beispiel sieht man bspw., wie häufig die Namen der Philosophen Martin Heidegger, Ludwig Wittgenstein und John Dewey zwischen 1900 und 2019 in deutschen Publikationen verwendet wurden:
+
+<iframe name="ngram_chart" src="https://books.google.com/ngrams/interactive_chart?content=ludwig+wittgenstein,martin+heidegger,john+dewey&year_start=1950&year_end=2019&case_insensitive=on&corpus=de-2019&smoothing=3" width=1000 height=360 marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0 scrolling=no></iframe>
+
+Das Tool kann für Geisteswissenschaftler sehr nützlich sein, weil es Einblicke in die Entwicklung und Verwendung bestimmter Begriffe oder Ideen im Laufe der Zeit bietet.
+
+Hier ist ein kurzes Tutorial, das die Verwendung des [Google Books Ngram Viewer](https://books.google.com/ngrams/) anhand eines Beispiels erläutert:
+
+**Schritt 1: Eingabe der Suchbegriffe** Überlegen Sie sich für Ihr philosophisches Beispiel geeignete Schlüsselbegriffe oder -phrasen. Nehmen wir an, Sie möchten die Entwicklung des philosophischen Begriffs "Existenzialismus" im 20. Jahrhundert analysieren. Geben Sie den Begriff "Existenzialismus" in das Suchfeld ein. Sie können auch verwandte Begriffe hinzufügen, um einen umfassenderen Kontext zu erhalten.
+
+**Schritt 2: Festlegung der Parameter** Wählen Sie den gewünschten Zeitraum aus, den Sie analysieren möchten. Sie können den Zeitraum über die verfügbaren Optionen anpassen, z. B. von 1900 bis 2000. Achten Sie darauf, dass der gewählte Zeitraum für Ihre Analyse relevant ist.
+
+**Schritt 3: Visualisierung und Analyse der Daten** Nachdem Sie die Suchbegriffe und den Zeitraum festgelegt haben, klicken Sie auf "Search". Der Ngram Viewer generiert dann ein Diagramm, das die Häufigkeit des Auftretens Ihrer Begriffe im ausgewählten Zeitraum anzeigt. Analysieren Sie die Grafik, um Trends, Spitzen oder Rückgänge in der Verwendung der Begriffe im Laufe der Zeit zu erkennen.
+
+**Schritt 4: Interpretation der Ergebnisse** Basierend auf den angezeigten Daten interpretieren Sie die Ergebnisse und ziehen Sie Schlussfolgerungen über die Verbreitung und Relevanz des Begriffs "Existenzialismus" im Laufe des 20. Jahrhunderts. Beachten Sie dabei historische Ereignisse oder kulturelle Entwicklungen, die möglicherweise die Verwendung des Begriffs beeinflusst haben könnten.
+
+**Schritt 5: Weiterführende Forschung** Verwenden Sie die gewonnenen Erkenntnisse als Ausgangspunkt für weitere Forschungen und Studien im Bereich der Philosophie. Vergleichen Sie beispielsweise die Verwendung von "Existenzialismus" mit anderen philosophischen Strömungen oder untersuchen Sie die Einflüsse bestimmter Philosophen auf die Verbreitung dieses Begriffs.
+
+### Blücher: Distant Reading Ideen
+
+**Bildet Kleingruppen!**
+
+Entwickelt *Distant Reading* Ideen für die Vorlesung "Why and How We Study Philosophy" von Heinrich Blücher: Was interessiert euch? Wie könnten Voyant (oder der Google Books N-Gram Viewer) euch bei der Beantwortung der Fragen helfen?
+
+### Zur nächsten Sitzung
+
+Versucht Eure Idee für das *Distant Reading* von Heinrich Blücher als Kleingruppe umzusetzen. Entwickelt mindestens eine Visualisierung anhand der ihr Euer Forschungsinteresse/Eure Forschungsfrage beantworten könnt. 
+
+## Sitzung am 21.11.
