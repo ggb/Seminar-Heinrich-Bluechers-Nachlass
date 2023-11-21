@@ -92,6 +92,36 @@ Mögliche Referatsthemen:
 * Chancen/Grenzen Deep Reading analog/digital
 * ...
 
+
+#### Hinweise zum Protokoll (für Informatiker_innen)
+
+**Aufgabenstellung:** Schreibt ein Protokoll/Workshop-Bericht über eines der Tools, das für die drei Bereiche Distant, Deep und Close Reading vorgestellt wurden. Sucht euch dafür ein eigenes Textbeispiel, das mit Heinrich Blücher (oder Hannah Arendt) in Verbindung steht (von oder über ihn/sie) und reflektiert anschließend die Verwendung des Tools: Wie hat sich die Verwendung gestaltet? Was habt ihr herausgefunden bzw. welche Fragen sind offengeblieben? Was sind generell die Limitationen und Möglichkeiten des verwendeten Tools? 
+
+Das Protokoll kann jederzeit **bis zum 09. Februar 2024** (Ende der Vorlesungszeit) per E-Mail (ggb@informatik.uni-kiel.de) bei mir als PDF eingereicht werden. 
+
+Weitere Formalia:
+
+* 500 Wörter (+/- 20%), etwa eine Seite
+* Name, stu-Mailadresse
+* Unterschriebene Eigenständigkeitserklärung
+* Falls externe Quellen oder Literatur verwendet wurden, müssen diese gemäß eines üblichen Zitationsstandards (APA, IEEE, ACM, etc.) angegeben werden
+* Falls ChatGPT o. ä. verwendet wurden: Umfang und Prompts angeben (ich rate von der Verwendung ab, da es sich um eine Reflexion der eigenen Erfahrungen mit dem Tool handeln soll)
+
+Für eine ausreichende (oder bessere) Arbeit
+
+* Besitzt der eingereichte Text eine klare Struktur
+* Wurde eine Rechtschreib- und Grammatikprüfung durchgeführt
+* Ein relevanter Text für die Analyse ausgewählt
+* Werden Vor- und Nachteile des verwendeten Tools benannt
+
+Eine gute (oder bessere) Arbeit
+
+* Ist verständlich geschrieben und besitzt einen deutlichen, roten Faden
+* Reflektiert euren fachlichen Hintergrund als Informatiker:in bei der Verwendung des Tools
+* Bezieht die fachliche Expertise eines Mitstudierenden aus der Philosophie mit ein (bspw. bei der Auswahl des Textes, der Entwicklung einer Fragestellung, der Reflexion des eigenen Hintergrunds)
+* Bezieht Erkenntnisse aus den Seminargesprächen mit ein
+
+
 ## Sitzung am 24.10.
 
 ### "Speed Dating"
