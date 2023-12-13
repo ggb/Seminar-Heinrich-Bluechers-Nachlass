@@ -365,3 +365,531 @@ Entwickelt *Distant Reading* Ideen für die Vorlesung "Why and How We Study Phil
 Versucht Eure Idee für das *Distant Reading* von Heinrich Blücher als Kleingruppe umzusetzen. Entwickelt mindestens eine Visualisierung anhand der ihr Euer Forschungsinteresse/Eure Forschungsfrage beantworten könnt. 
 
 ## Sitzung am 21.11.
+
+### Gruppenergebnisse
+
+Die Kleingruppen präsentieren ihre Ergebnisse. 
+
+### Kritik und Limitationen von DR
+
+> Should our only ambition be to create authoritative totalizing patterns depending on untested statements by small groups of people treated as native informants? 
+>
+>(Spivak, Gayatri Chakravorty (2005). Death of a Discipline. Columbia University Press. pp. 107–8)
+
+## Sitzung am 28.11.
+
+**Wegen Streik ausgefallen!**
+
+
+## Sitzung am 05.12.
+
+**Hier wird noch etwas ergänzt, wir bitten um etwas Geduld...**
+
+
+## Sitzung am 12.12.
+
+
+### XML-Grundlagen
+
+> Wo sind euch bereits XML-Formate begegnet?
+>
+> Welche Beispiele könnt ihr nennen?
+>
+> Warum könnte das eine sinnvolle Möglichkeit sein Daten abzulegen?
+
+#### Beispiele
+
+Sowohl Word, als auch Excel (und andere Microsoft Office-Tools) speichern ihre Daten im XML-Format ab. Dafür steht das *x* in der Dateiendung *.docx* bzw. *.xlsx* (in dem Fall: das zweite *x*). Man *sieht* die XML-Daten nicht, weil sie komprimiert werden, im sogenannten Zip-Format. Mit ein wenig technischem Verständnis kann man aber die Rohdaten sichtbar machen. In der Regel ist das nicht erforderlich und sollte auch nicht gemacht werden: Word und Excel "wissen", wie sie mit diesen Informationen umgehen müssen, händische (menschliche) Interventionen können die Daten zerstören.
+
+Ein weiteres Beispiel für XML (genau genommen: ein XML-ähnliches Format) ist die Hypertext Markup Language (HTML), die zum Bau von Websiten verwendet wird:
+
+![Die CAU Website ist mit HTML gebaut, einem XML-ähnlichen Standard](img/cau_website.png)
+
+#### Grundlagen
+
+XML — kurz für: eXtensible Markup Language — ist ein textbasiertes Format zur Speicherung von Daten. Von XML leiten sich verschiedene andere Standards ab, die jedoch alle gleichen Prinzipien folgen. Beispiele für solche abgeleiteten Standards sind TEI (*Text Encoding Initiative*), RDF (*Resource Description Framework*) oder XSLT (*Extensible Stylesheet Language Transformation*). XML ist eine Art Metasprache, um verschiedene Wege zu ermöglichen standardisierte Datenbeschreibungen vorzunehmen.
+
+XML-Dokumente bestehen aus sogenannten *tags*:
+
+```xml
+<name>Max Mustermann</name>
+```
+
+Der *tag* ist in diesem Fall *name*, der aus einem öffnenden und schließenden (mit einem "/" beginnend) Anteil gebildet wird. Dadurch wird ausgezeichnet, *was* beschrieben wird, in diesem Fall ein Name. Der konkrete Name steht zwischen den Tags. Einzelne XML-Tags funktionieren also wie ein Oreo-Keks: Außen herum ist die langweilige, harte Beschreibung, innendrin der weiche, semantische Kern.
+
+![Ein einzelner Tag ist wie ein Oreo-Keks](img/Oreo-Two-Cookies.jpg "Evan-Amos, Public domain, via Wikimedia Commons")
+
+*Tags* können nun ineinander geschachtelt werden oder auch nebeneinander stehen. Stehen zwei *tags* nebeneinander spricht man von Geschwistern, ist ein Tag in einem anderen geschachtelt, so spricht man bei dem inneren von dem Kind- (oder *child*), bei dem äußeren von dem Vater- bzw. Eltern- (oder *parent* bzw. *ancestor*) *tag*.
+
+Es **muss** immer ein Wurzelelement (*root element*) geben, dass alle anderen Elemente beinhaltet. Innerhalb dieses Wurzelelements kann es *siblings* geben, aber das *root element* kann niemals *sibling* zu einem anderen sein.
+
+![XML funktioniert wie eine Matroshka-Puppe](img/1024px-Russian-Matroshka.jpg "No machine-readable author provided. Fanghong assumed (based on copyright claims)., CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>, via Wikimedia Commons")
+
+In diesem Sinne funktioniert XML wie eine Matroshka-Puppe, da sich *tags* ineinander schachteln und dadurch hierarchische Strukturen bilden lassen:
+
+```xml
+<person>
+   <name>Max Mustermann</name>
+   <alter>30</alter>
+      <adresse>
+      <straße>Hauptstraße 1</straße>
+      <stadt>Berlin</stadt>
+      <land>Deutschland</land>
+   </adresse>
+</person>
+```
+
+Ist ein XML-Dokument in diesem Sinne korrekt formatiert, dann sagt man auch es sei **well-formed**: Es wurden keine syntaktischen Fehler gemacht, alle Klammern schließen korrekt und die öffnenden und schließenden *tags* sind korrekt gesetzt.
+
+Es ist zudem möglich ein spezielles Schema mit einem Dokument zu verknüpfen um kenntlich zu machen, welche *tags* es gibt und in welcher Beziehung diese zueinander stehen können. Geschieht dies, so lässt sich automatisch überpüfen, ob ein Dokument **valide** (*valid*) ist.
+
+Noch ein Hinweis zum Schluss: Wenn ein XML-Dokument selbst bestimmte Sonderzeichen innerhalb eines Tags verwenden möchte, so müssen diese Zeichen **escaped** werden:
+
+```xml
+<formula>3 < 4 => True</formula>
+```
+
+Würde unweigerlich zu einem Fehler führen, während
+
+```xml
+<formula>3 &lt; 4 =&gt; True</formula>
+```
+
+korrekt ist.
+
+---
+
+Als Vorlage dieses Abschnitts diente der hervorragende Blogbeitrag [A shamelessly short intro to XML for DH beginners (includes TEI)](https://latex-ninja.com/2022/02/02/a-shamelessly-short-intro-to-xml-for-dh-beginners-includes-tei/)
+
+#### ChatGPT: Erklär mir XML als wäre ich ein 5-jähriger
+
+Stell dir vor, dass du ein Bild malst und es deiner Freundin oder deinem Freund zeigen möchtest. Wenn du einfach nur das Bild zeigst, kann es schwierig sein, bestimmte Details oder Informationen zu erklären. Wenn du jedoch das Bild in kleinere Abschnitte aufteilst und jeder Abschnitt einen Namen gibst, kann es viel einfacher sein, bestimmte Elemente des Bildes zu identifizieren und darüber zu sprechen.
+
+XML funktioniert auf eine ähnliche Weise. Es teilt Informationen in klar definierte Abschnitte auf, die als "Tags" bezeichnet werden, und jedem Tag wird ein Name gegeben, der beschreibt, was in diesem Abschnitt enthalten ist. Diese Tags können dann in einer bestimmten Reihenfolge angeordnet werden, um eine Struktur oder einen "Baum" von Informationen zu erstellen.
+
+Zum Beispiel könnte XML verwendet werden, um Informationen über eine Person zu organisieren und auszutauschen:
+
+```xml
+<person>
+   <name>Max Mustermann</name>
+   <alter>30</alter>
+   <adresse>
+      <straße>Hauptstraße 1</straße>
+      <stadt>Berlin</stadt>
+      <land>Deutschland</land>
+   </adresse>
+</person>
+```
+
+In diesem Beispiel gibt es einen "person"-Tag, der die gesamten Informationen über eine Person enthält. Der "name"-Tag enthält den Namen der Person, der "alter"-Tag enthält das Alter, und der "adresse"-Tag enthält Informationen über die Adresse der Person, einschließlich der Straße, Stadt und Land. Jeder Tag ist klar definiert und in einer bestimmten Reihenfolge angeordnet, um die Informationen übersichtlich darzustellen.
+
+Durch die Verwendung von XML können Computer leichter Informationen austauschen, weil sie wissen, wo sie bestimmte Informationen finden und wie sie auf diese zugreifen können, ohne dass menschliche Intervention erforderlich ist.
+
+#### Übungen
+
+**1.** Gegeben ist das folgende XML-Dokument:
+
+```xml
+<person>
+   <name>Max Mustermann</name>
+   <alter>30</alter>
+   <adresse>
+      <straße>Hauptstraße 1</straße>
+      <stadt>Berlin</stadt>
+      <land>Deutschland</land>
+   </adresse>
+</person>
+```
+
+a) Ist das Dokument **well-formed**?
+
+[(X)] Ja
+[( )] Nein
+
+b) In welchem Verhältnis stehen die *tags* *name* und *alter* (X ist _ zu Y) zueinander?
+
+[( )] root element
+[( )] child
+[( )] parent
+[(X)] sibling
+[( )] ancestor
+[( )] successor
+
+c) In welchem Verhältnis stehen die *tags* *person* und *adresse* (X ist _ zu Y) zueinander?
+
+[( )] root element
+[( )] child
+[(X)] parent
+[( )] sibling
+[( )] ancestor
+[( )] successor
+
+d) In welchem Verhältnis stehen die *tags* *land* und *person* (X ist _ zu Y) zueinander?
+
+[( )] root element
+[( )] child
+[( )] parent
+[( )] sibling
+[( )] ancestor
+[(X)] successor
+
+---
+
+**2.** Das folgende XML-Dokument ist nicht **well-formed**:
+
+```xml
+<book>
+   <title>Harry Potter and the Sorcerer's Stone</title>
+   <author>J.K. Rowling</autor>
+   <year>1997</year>
+   <publisher>Scholastic</publisher>
+</book>
+<genre>Fantasy</genre>
+```
+
+Welche Fehler sind darin enthalten?
+
+[[X]] Es gibt kein Wurzelelement
+[[ ]] Der Title-tag wird nicht korrekt geschlossen
+[[X]] Der Author-tag wird nicht korrekt geschlossen
+[[ ]] Es gibt keinen Publisher namens "Scholastic"
+[[ ]] Harry Potter gehört in die Kategorie "YA Fantasy"
+
+---
+
+**3.** Das folgende XML-Dokument ist nicht **well-formed**:
+
+```xml
+<book>
+   <title>The Catcher in the Rye<title>
+   <author>J.D. Salinger<author>
+   <year>1951</year>
+   <publisher>Little, Brown and Company</publisher
+</book>
+```
+
+Welche Fehler sind darin enthalten?
+
+(Auswahlmöglichkeiten wurden hier bewusst ausgespart.)
+
+### Gemeinsame Sprache TEI
+
+![Logo_TEI!](img/TEI.jpg)
+
+1. Die Text-Encoding-Initiative ist ein Konsortium, das einen *community standard* erstellt und pflegt.
+2. Sie stellen v.a. die guidelines zur Verfügung, die ein kontrolliertes Vokabular der Auszeichnung ermöglichen. Aus den (vermutlich) unendlichen Möglichkeiten der XML-Auszeichnungen trifft die TEI eine Auswahl und legt damit ein Vokabular und eine Grammatik fest.
+
+> TEI P5 Guidelines
+> http://www.tei-c.org/release/doc/tei-p5-doc/en/html/index.html  
+> Version 4.6.0. (letztes Update am 04. April 2023)
+
+
+#### Grundstruktur
+
+Jedes valide TEI-Dokument enthält die folgenden Elemente:
+
+1. Das Wurzelelement `<TEI>`
+2. Einen "Namensraum" (*Namespace*), der im Wurzelelement als Attribut (`xmlns` angegeben ist): `<TEI xmlns="http://www.tei-c.org/ns/1.0">`
+3. Eine Zuweisung des verwendeten Schemas
+4. `<teiHeader>` für Metadaten
+5. `<text>` enthält den eigentlichen, zu annotierenden Text
+
+#### Header – Zuhause für Metadaten
+
+Der Header (`teiHeader`) ist eines der wenigen verpflichtenden Elemente in TEI. Er enthält verschiedene beschreibende und Meta-Information zum Text, Transkription, Edition und Bearbeitungshistorie. 
+
+Diese beschreibenden und erklärenden Metadaten, die der digitalen Ressource vorangestellt sind, werden bspw. von Repositorien, Bibliotheken und Archiven verwendet. Sie ermöglichen die schnelle Auffindbarkeit und Einschätzung einer (digitalen) Quelle. 
+
+Der Header enthält außerdem häufig (*best practice!*) die Dokumentation der Kodierungspraxis, d.h. Informationen dazu, warum welche Begriffe wie codiert wurden. 
+
+Der Header setzt sich wiederum aus verschiedenen *tags* zusammen, die ihrerseits weitere Informationen beinhalten:
+
+* `<fileDesc>`: bibliographische Beschreibung der Datei
+* `<encodingDesc>`: Verhältnis zwischen elektronischem Text und seiner Quelle
+* `<profileDesc>`: Beschreibung der nicht-bibliographischen Merkmale des Textes, insbes. Sprache, Entstehung(sbedingungen), Beteiligte, Aussehen des Mediums
+* `<xenoData>`: alle nicht TEI-konformenen Metadaten
+* `<revisionDesc>`: dokumentiert die Änderungen, die an der elektronischen Datei vorgenommen wurden (wer, wann, was)
+
+#### Beispiel für einen TEI-Header
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <!-- Title of the Text -->
+      <fileDesc>
+         <titleStmt>
+            <title>What is the title of the text?</title>
+         </titleStmt>
+         
+         <!-- Author Information -->
+         <publicationStmt>
+            <p>Who is the author of the text?</p>
+            <author>Author's Name</author>
+         </publicationStmt>
+         
+         <!-- Information about the Source of the Text -->
+         <sourceDesc>
+            <p>What is the source of the text? (e.g., book, article, manuscript)</p>
+            <bibl>Source Information</bibl>
+         </sourceDesc>
+      </fileDesc>
+      
+      <!-- Information about the Encoding Process -->
+      <encodingDesc>
+         <editorialDecl>
+            <p>Describe any editorial decisions or encoding practices used in the text.</p>
+            <p>Editorial decisions: </p>
+            <p>Encoding practices: </p>
+         </editorialDecl>
+      </encodingDesc>
+      
+      <!-- Information about the Project and Funding -->
+      <profileDesc>
+         <creation>
+            <p>When was the text created?</p>
+         </creation>
+         
+         <!-- Project and Funding Information -->
+         <langUsage>
+            <language id="en">English</language>
+         </langUsage>
+      </profileDesc>
+      
+      <!-- Information about the Text's Context -->
+      <revisionDesc>
+         <change>
+            <p>Describe any revisions made to the text or encoding.</p>
+         </change>
+      </revisionDesc>
+   </teiHeader>
+   
+   <!-- The main content of the text goes here -->
+   <text>
+      <!-- Content of the text -->
+   </text>
+</TEI>
+```
+
+#### Must-have: `fileDesc`
+
+`<fileDesc>` ist das einzige verpflichtende Elemente im header. Aus der `<fileDesc>` werden wichtige Informationen übernommen, die für Katalogeinträge relevant sind und die Zitation der elektronischen Datei ermöglichen. AutorIn, Titel, HerausgeberIn, Publikation, Distribution, Angaben zur analogen Quelle, Verantwortliche, Finanzierung des Projekts etc. werden dort festgehalten.
+
+Eine gute `<fileDesc>` weist gute wissenschaftliche Praxis aus und validiert digitale Publikationen als nachvollziehbar und zitierbar.
+
+Innerhalb der `<fileDesc>` stehen verpflichtend:
+
+1. `<titleStmt>` Angaben zum Titel der Datei
+2. `<publicationStmt>` Angaben zu den Publikationsdaten der Datei
+3. `<sourceDesc>` Angaben zur Quelle/Vorlage der Datei
+
+Wie für die meisten Dinge zu Beginn einer Publikation, ist es ratsam, diese Informationen erst am Ende des Prozesses einzutragen und zu Beginn lediglich Platzhalter zu schreiben.
+
+#### Unser Annotationsvokabular
+
+Die folgenden TEI *tags* werden wir für die Auszeichnung der Blücher-Vorlesungen verwenden. Diese *tags* werden im `<text> .... </text>` verwendet und umschließen jeweils die von Blücher verwendeten Wörter/Begriffe. Durch Attribute können zusätzliche Informationen angegeben werden. 
+
+Verpflichtend:
+
+* Person (`persName`)
+* Organisation (`orgName`)
+* Ort (`placeName`)
+* Term, Begriff (`term`)
+* Datum (`date`)
+
+Optional: 
+
+* Link (`ref`)
+* Abkürzung (`abbr`)
+* Sic! (`sic`)
+* Regulierende Eingriffe (`reg`)
+* Highlight (`hi`)
+
+Beispiel:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <!-- ausgelassen... -->
+   </teiHeader>
+   
+   <text>
+      ...
+
+      Why must man work philosophically and live philosophically? That can only be 
+      explained by the seeming rigidness of this proposition, which almost brings 
+      in a <term>categorical imperative</term>. I condemn <persName>Nietzsche</persName> 
+      and <persName>Hegel</persName> for bringing in the "you must" (instead of
+      <persName>Kant's</persName> "you shall") because it means if you do not, you 
+      will be a dope.
+
+      ...
+   </text>
+</TEI>
+```
+
+### Normdaten und Normdatenbanken
+
+*Normdaten* bieten ein kontrolliertes Vokabular zur Identifikation von Personen, Orten, Institutionen u.v.m. In *Normdatenbanken* werden *Normdaten* anhand eines eindeutigen, persistenten Identifiers zur Verfügung gestellt. Dieser wird auch als *Uniform Resource Identifier* (URI) bezeichnet.
+
+Normdaten stellen zum Teil die **FAIR**ness (Findable, Accessible, Interoperable, Reusable) von (Forschungs-)Daten sicher.
+
+#### Wichtige Normdatenbanken (Autoritäten)
+
+* GND (gemeinsame Normdatei): Personen, Körperschaften, Orte
+* LCCN (Library of Congress Control Number): amerikanische Variante der GND
+* VIAF (Virtual International Authority File): Mapping versch. Normdaten
+* Geonames: offenes Projekt für Ortsnamen
+* TGN (Getty Thesaurus of Geographic Names): Ortsnamen
+* u.v.a.
+
+#### Beispiel zur Verwendung von Normdatenbanken
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <!-- ausgelassen... -->
+   </teiHeader>
+   
+   <text>
+      ...
+
+      Why must man work philosophically and live philosophically? That can only be 
+      explained by the seeming rigidness of this proposition, which almost brings 
+      in a <term ref="xyz-977821232">categorical imperative</term>. I condemn 
+      <persName ref="gnd-121258564">Nietzsche</persName>  and 
+      <persName ref="gnd-1163295531">Hegel</persName> for bringing in the "you must"
+      (instead of <persName ref="gnd-122286111">Kant's</persName> "you shall") 
+      because it means if you do not, you will be a dope.
+
+      ...
+   </text>
+</TEI>
+```
+
+#### (opt.) Verlinkung und eigene Normdaten
+
+Innerhalb eines TEI-Dokuments können wir selbst Identifikationen vergeben und *interne Normdaten* zur Verfügung stellen.
+
+Die Verknüpfung eines Auszeichnung mit internen oder externen Normdaten erfolgt über eine Verlinkung (*linking*).
+
+> In welchen Fällen könnte es sinnvoll sein eigene Normdaten zur Verfügung zu stellen?
+
+#### (opt.) Linking
+
+*Linking* wird verwendet, um Verbindungen zwischen identifizierten benannten Entitäten (*named entities*, z.B. Personen, Orte, Ereignisse, ...) und einer ausführlicheren Erklärung bzw. einem Normdatum herzustellen.
+
+Eine Verlinkung wird mittels einem Identifier hergestellt, der im `ref`-Attribut des verlinkenden Tags angegeben wird.
+
+Handelt es sich um einen internen Link, also um einen Link, der auf etwas verlinkt, das im gleichen Dokument definiert wird, muss ein `#` vor dem Identifier stehen.
+
+#### (opt.) Beispiel
+
+Das folgende, ausführliche Beispiel aus der [TEI Dokumentation](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-standOff.html) veranschaulicht sehr gut das Vorgehen: In einem speziellen Bereich, dem `standOff`, werden eigene Normdaten definiert: Die Städte Atlanta und Birmingham. Beide verfügen über einen eindeutigen, einzigartigen Identifier (`LATL` und `LBHM`). Diese IDs können im weiteren Text verwendet werden, um eine interne Verlinkung (bspw. `#LATL`) zwischen einer `placeName`-Auszeichnung und der entsprechenden Stadt herzustellen: `<placeName ref="#LATL">Atlanta</placeName>`.
+
+```xml
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+ <teiHeader>
+<!-- ... -->
+ </teiHeader>
+ <standOff>
+  <listPlace>
+   <place xml:id="LATL">
+    <placeName>Atlanta</placeName>
+    <location>
+     <region key="US-GA">Georgia</region>
+     <country key="USA">United States of America</country>
+     <geo>33.755 -84.39</geo>
+    </location>
+    <population when="1963"
+     type="interpolatedCensus" quantity="489359"
+     source="https://www.biggestuscities.com/city/atlanta-georgia"/>
+   </place>
+   <place xml:id="LBHM">
+    <placeName>Birmingham</placeName>
+    <location>
+     <region key="US-AL">Alabama</region>
+     <country key="USA">United States of America</country>
+     <geo>33.653333 -86.808889</geo>
+    </location>
+    <population when="1963"
+     type="interpolatedCensus" quantity="332891"
+     source="https://www.biggestuscities.com/city/birmingham-alabama"/>
+   </place>
+  </listPlace>
+ </standOff>
+ <text>
+  <body>
+<!-- ... -->
+   <p>Moreover, I am <choice>
+     <sic>congnizant</sic>
+     <corr>cognizant</corr>
+    </choice> of the interrelatedness of all communities and
+   <lb/>states. I cannot sit idly by in <placeName ref="#LATL">Atlanta</placeName> and not be concerned about what happens
+   <lb/>in <placeName ref="#LBHM">Birmingham</placeName>. <seg xml:id="FQ17">Injustice anywhere is a threat to justice everywhere.</seg> We
+   <lb/>are caught in an inescapable network of mutuality, tied in a single garment
+   <lb/>of destiny. Whatever affects one directly affects all indirectly. Never
+   <lb/>again can we afford to live with the narrow, provincial <soCalled rendition="#Rqms">outside agitator</soCalled>
+    <lb/>idea. Anyone who lives inside the United States can never be considered
+   <lb/>an outsider anywhere in this country.</p>
+<!-- ... -->
+  </body>
+ </text>
+</TEI>
+```
+
+Neben dem `standOff`-Bereich, der sich unmittelbar unter dem TEI-Wurzelelement befindet, gibt es auch noch zwei Alternativen:
+
+`back` beinhaltet Anhänge und vertiefende Informationen zu einem Text oder Textabschnitt. Entsprechend wird dieser Bereich in der Regel im Anschluss an einen `text` angefügt.
+
+`particDesc` und `settingDesc` sind Elemente des TEI Headers und dienen dazu Personen, Organisationen (im Fall von `particDesc`) und Orte (im Fall von `settingDesc`) zu definieren.
+
+Die verschiedenen Auszeichnungen haben verschiedene Anwendungsbereiche, die sich in der Dokumentation nachlesen lassen. Im Zweifel ist `standOff` in der Regel keine schlechte Wahl und kann verwendet werden, solange sich keine unmittelbaren Gründe ergeben, die dagegen sprechen.
+
+#### Weitere Informationen
+
+Vertiefende Informationen finden Sie hier (keine Pflichtlektüre, aber empfohlen):
+
+> Kapitel 16 "Aufbau von Datensammlungen" (S. 223 - 233) in:
+>
+> Jannidis, F.; Kohle, H. & Rehbein, M. (Eds.): *Digital Humanities*. J.B. Metzler, 2017.
+
+### Erste Schritte mit dem TEI Publisher
+
+{{1}}
+Der TEI Publisher begrüßt Sie mit dem folgenden Start-Bildschirm:
+
+![Start-Bildschirm des TEI Publishers](img/tei_pub_start.png)
+
+{{2}}
+Loggen Sie sich zunächst mit den Login-Daten ein (oben rechts), die Sie von mir per Mail erhalten haben.
+
+{{3}}
+Klicken Sie anschließend auf "Annotation Samples": Dadurch kommen Sie in eine neue Ansicht, in der Sie eigene Dokumente hochladen können, in dem Sie sie mit *drag and drop* aus einem Verzeichnis in den Upload-Bereich (rechts, unterhalb des Logins) verschieben.
+
+![Annotations Samples und Upload-Bereich](img/tei_pub_upload.png)
+
+Anschließend sind die Dokumente in der Liste (mitte) sichtbar und können angeglickt werden. Dadurch gelangen Sie in die Annotationsansicht.
+
+{{4}}
+In der Annotationsansicht können Sie ein oder mehrere Worte markieren, wie Sie es aus anderen Textverarbeitungsprogrammen gewohnt sind. Durch einen Klick auf eines der Icon auf der linken Seite, versehen Sie die Markierung mit einer TEI-Annotation (einem *tag*).
+
+![Annotationsansicht](img/anno_markieren.png)
+
+{{5}}
+Es öffnet sich eine Suchmaske, die die Annotation mit einem eindeutigen *Identifier* in der GND verknüpft. Für die Suche müssen sie u. U. den Suchterm anpassen (und möglicherweise auch verschiedene ausprobieren).
+
+![Identifier suchen und korrigieren](img/anno_korrigieren.png)
+
+{{6}}
+Gibt es mehrere Auftreten des gleichen Terms im Dokument, dann erhalten Sie auf der linken Seite (unterhalb der Icon) die Möglichkeit durch das Anhaken der Boxen auch alle anderen Auftreten auszuzeichnen. Dies vereinfacht und beschleunigt die Annotation.
+
+### Hausaufgabe
+
+> 1. Bildet Kleingruppen (oder findet Euch in den "alten" Kleingruppen zusammen). Jede Kleingruppe sollte aus 2 bis 3 Personen bestehen und jeweils min. eine:n Philosoph:in und eine:n Informatiker:in umfassen.
+> 2. Schreibt mir ein E-Mail (ggb@informatik.uni-kiel.de). Ich antworte Euch mit einem Nutzer-Account für Eure Gruppe und einem Teil der Blücher-Vorlesung als TEI Dokument. Das Dokument könnt ihr anschließend selbst im TEI Publisher hochladen.
+> 3. Ihr annotiert bis zur nächsten Woche soweit ihr kommt. Organisiert Euch und Eure Arbeit dafür sinnvoll. Notiert Personen, Orte, Organisationen etc., die sich nicht annotieren lassen (weil es keine Normdaten gibt). 
+> 4. Annotiert alle Personen, Organisationen, Orte, Begriffe und Daten in Eurem gesamten Dokument bis zum 09.01. 
+> 5. Meldet Euch zeitnah per Mail oder Mattermost, falls Ihr Fragen habt!
