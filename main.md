@@ -893,3 +893,13 @@ Gibt es mehrere Auftreten des gleichen Terms im Dokument, dann erhalten Sie auf 
 > 3. Ihr annotiert bis zur nächsten Woche soweit ihr kommt. Organisiert Euch und Eure Arbeit dafür sinnvoll. Notiert Personen, Orte, Organisationen etc., die sich nicht annotieren lassen (weil es keine Normdaten gibt). 
 > 4. Annotiert alle Personen, Organisationen, Orte, Begriffe und Daten in Eurem gesamten Dokument bis zum 09.01. 
 > 5. Meldet Euch zeitnah per Mail oder Mattermost, falls Ihr Fragen habt!
+
+## Sitzung am 19.12. 
+
+In dieser Sitzung haben wir ein Referat zu Unterschieden zwischen Deep Reading analog und digital besprochen und damit das Thema "Deep Reading" vorläufig abgeschlossen. Außerdem wurden Fragen zur Arbeit mit dem TEI Publisher geklärt, Feedback zur Veranstaltung bisher eingeholt und das weitere Vorgehen angeteasert. 
+
+### Zur nächsten Sitzung
+
+Bzw. bis zum 12.01. sollen alle Kleingruppen ein Kapitel der Blücher-Vorlesung annotieren. 
+
+Meldet euch bitte bei Gregor (ggb@informatik.uni-kiel.de), falls ihr entweder noch keine Kleingruppe und/oder kein Kapitel und keine Zugangsinformationen für den TEI Publisher habt.
