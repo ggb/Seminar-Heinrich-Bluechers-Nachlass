@@ -383,7 +383,22 @@ Die Kleingruppen präsentieren ihre Ergebnisse.
 
 ## Sitzung am 05.12.
 
-**Hier wird noch etwas ergänzt, wir bitten um etwas Geduld...**
+Die Sitzung widmet sich den geisteswissenschaftlichen Grundlagen des Deep Reading.
+
+### Beispiele für Text und Edition
+
+#### Handschrift (Tagebuch, 1943)
+
+![ScanImage42.jpg](img/ScanImage42.jpg)
+
+  
+#### Handschrift (Seminarnotizen von Mary Midgley, 1970er)
+
+![Midgley4.jpg](img/Midgley4.jpg)
+
+#### Edition von Homers Ilias mit textkritischem Apparat
+
+![Ilias Prooimion 1-5.jpg](img/Ilias%20Prooimion%201-5.jpg)
 
 
 ## Sitzung am 12.12.
@@ -903,3 +918,59 @@ In dieser Sitzung haben wir ein Referat zu Unterschieden zwischen Deep Reading a
 Bzw. bis zum 12.01. sollen alle Kleingruppen ein Kapitel der Blücher-Vorlesung annotieren. 
 
 Meldet euch bitte bei Gregor (ggb@informatik.uni-kiel.de), falls ihr entweder noch keine Kleingruppe und/oder kein Kapitel und keine Zugangsinformationen für den TEI Publisher habt.
+
+
+## Sitzung am 09.01.
+
+Diese Sitzung beschäftigt sich damit, wie man sinnvoll Forschungsfragen für Digital Humanities-Projekte entwirft und deren Umsetzung plant.
+
+### Wiederholung: Why and How We Study Philosophy
+
+### Inkshedding: Themenfindung
+
+1. Faltet ein DIN A4-Blatt vertikal in der Mitte. Vervollständigt auf der linken Seite des Knicks den nachfolgenden Satz. Nutzt die komplette linke Seite und schreibt möglichst leserlich! Ihr habt 10 Minuten Zeit.
+
+> Der Aspekt … interessiert mich besonders an den Vorlesungen von Heinrich Blücher, weil …
+
+1. Anschließend werden alle Zettel eingesammelt, gemischt und erneut ausgeteilt. Lest den (hoffentlich fremden) Text und markiert und kommentiert die Punkte, die ihr besonders gut und spannend findet. Achtet auf interessante Inhalte und kommentiert immer positiv, etwa so: „Großartige Idee! Dazu fällt mir auch ein, dass …“. Dazu stehen 5 Minuten zur Verfügung.
+2. Wir wiederholen 2. ein zweites Mal.
+
+### Forschungsfragen
+
+### Kleingruppen
+
+## Sitzung am 16.01.
+
+Diese Sitzung beschäftigt sich mit den geisteswissenschaftlichen Grundlagen von Close Reading
+
+### Metzler Lexikon Literatur und Kulturtheorie: Begriffsbestimmung
+
+> Close reading (engl., ›genaues, textnahes Lesen‹), eine Form der sehr detaillierten, gründlichen, textnahen und intensiven Lektüre und Interpretation, die völlig werkzentriert ist (Werkästhetik), von der Autonomie des Kunstwerks ausgeht, sämtliche Faktoren des Kontexts bewusst ausblendet und auf die Erschließung der sprachlichen Besonderheiten, formalen Merkmale und Bedeutungsnuancen des jeweiligen Werks konzentriert ist. Die theoretisch nur ansatzweise reflektierte Interpretationspraxis des c. r., die an am. und engl. Universitäten von den 1930er Jahren bis etwa 1970 vorherrschend war (und z.T. noch heute ist) und durch einflussreiche textbooks weite Verbreitung fand, ist kennzeichnend für Ansätze wie den am. New Criticism und die werkimmanente Interpretation. Den Prinzipien des c. r. sind darüber hinaus Theorie und Verfahren des Russ. Formalismus und der Dekonstruktion verpflichtet. Anders als der New Criticism und die Werkästhetik, die zwar die Ambiguität von Lit. betonen, aber »auf die Einheit des Textes oder einer Bedeutung zielen« (Weitz 1995, S. 360), steht in der Lektürepraxis der Dekonstruktion allerdings »das Identifizieren und Offenlegen von Differenzen durch andere Differenzen« (ebd.) im Vordergrund, wobei ›Differenz‹ (différance/différence; J. Derrida) als neuer Leitbegriff fungiert (vgl. Johnson 1980; Weitz 1995). Trotz der ungebrochenen Relevanz des c. r. (u. a. auch im New Historicism) haben die kulturgeschichtliche Lit.wissenschaft und andere kulturwissenschaftliche Ansätze (Kulturwissenschaft) zu einer Aufwertung des wide reading als komplementärer Methode geführt (vgl. Hallet 2010)
+
+### Close Reading bei Spivak
+
+Gayatri Chakravorty Spivak (\*1942)
+
+![Gayatri_Spivak_on_Subversive_Festival.jpg](.attachments.565954312/Gayatri_Spivak_on_Subversive_Festival.jpg)
+  
+Eine der einflussreichsten Vertreterinnen des New Criticism und der literatur- und kulturtheoretischen Linie der postcolonial studies. Unter anderem berühmt geworden durch Ihre Übersetzung von Derridas De la Grammatologie ins Englische.
+
+Wichtigster Text: Can the subaltern speak? (1988); Kritik an Morettis Konzept des distant reading (s. Sitzung am 21.11.)
+
+#### Auszug aus "Death of a Disciple"
+
+> The world systems theorists upon whom Moretti relies are now producing sinocentric systems that are equally useless for literary study—that must depend on texture—because they equate economic with cultural systems. In fact, most close reading comparativists do not only read a few texts. They spread out and rely on good reference instruments such as Moretti will provide. They consult secondary texts based on other peoples’ close readings, as Moretti will. Where they can closely read, they see the “criticism” provided by the encyclopedist as necessarily superficial and unsatisfactory. (Death of a Disciple 2003, S. 108 N1)
+
+#### Auszug aus "Close Reading"
+
+> As a comparativist, I feel that one does not learn languages to bolster identity. The opposite, if anything - one ventures out to touch the other. Curiously enough, the Canadian First Nations, Inuit, and Metis say that their elders offer this lesson - the first lesson of responsibility. Paradoxically, even as the United Nations committee labors mightily to preserve the people's ability to say so, the institution must make it possible for other people to learn their languages, and not only for ethnographic purposes. The purposes, if you like, of close reading. What is it to read closely the riches of orature? I will repeat here the commonsense de scription of learning the first language that I often use: it will repeat what we know. Language is there because we want to touch another. The infant invents a language. The parents learn it. By way of this transaction, the infant enters a linguistic system that has a his tory before its birth and will continue to have a history after its death. Yet the adult this infant becomes will think of this language as his or her most intimate possession, and will mark it in a way, however small, that will be incorporated into his or her impersonal history. Only the first language is learned this way. It activates a mechanism once in a lifetime. \[...\] A knowledge-management model will never allow us to rethink the teaching and learning of languages in this way. Amit Bha duri makes the cogent remark that in the liberalized state, if the model is the market and the ordering principle is management, there will never be a "demand" for drinking water for the poor. The business of providing for the poor is then in the hands of the benevolent sovereign as structure, the economic textuality of which has been abundantly dismantled by heads better than mine. (Close Reading 2006, S. 1612)
+
+### Übung: Close Reading
+
+Lest jeder für sich Vorlesung 10, S. 67f., ab zweiter Absatz ("But the real principle...") bis S. 68 ("... and finally finding the authority in himself.").
+
+Diskutiert in Kleingruppen (zwei bis drei Personen) den wesentlichen Gedankengang Blüchers. Bleibt dabei im Text und verwendet die Methode des Close Readings. Notiert eure Ergebnisse so, dass ihr sie in drei Minuten den anderen Teilnehmer:innen vorstellen könnt. Benennt dafür ein:e Sprecher:in.
+
+## Sitzung am 22.01.
+
+In dieser Woche bekommen wir Besuch von Britta Petersen vom Rechenzentrum, die uns einen Einblick in die FAIR-Prinzipien und weitere wichtige Überlegungen für das Forschungsdatenmanagement gibt. Außerdem sprechen wir über Werkzeuge für Netzwerkanalyse.
