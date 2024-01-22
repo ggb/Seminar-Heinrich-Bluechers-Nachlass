@@ -93,15 +93,48 @@ Mögliche Referatsthemen:
 * ...
 
 
-#### Hinweise zum Protokoll (für Informatiker_innen)
+#### Hinweise zum "Poster" (für alle)
 
-**Aufgabenstellung:** Schreibt ein Protokoll/Workshop-Bericht über eines der Tools, das für die drei Bereiche Distant, Deep und Close Reading vorgestellt wurden. Sucht euch dafür ein eigenes Textbeispiel, das mit Heinrich Blücher (oder Hannah Arendt) in Verbindung steht (von oder über ihn/sie) und reflektiert anschließend die Verwendung des Tools: Wie hat sich die Verwendung gestaltet? Was habt ihr herausgefunden bzw. welche Fragen sind offengeblieben? Was sind generell die Limitationen und Möglichkeiten des verwendeten Tools? 
+**Aufgabenstellung:** Sucht euch als interdisziplinäre (!) Kleingruppe eine Fragestellung zur Vorlesung "Why and How We Study Philosophy" von Heinrich Blücher, die ihr mit den im Seminar vorgestellten Mitteln und Methoden der digitalen Geisteswissenschaften beanworten könnt. Führt eine entsprechende Analyse durch und bereitet eure Ergebnisse in einer Form auf, die leicht (und interaktiv) im Seminar präsentiert werden kann: Als akademisches Poster, als kurze PowerPoint-Präsentation (max. 3 Folien), als Website, als Spiel, ... Wichtig ist, dass eure Fragestellung, die verwendete Methodik, sowie eure Antwort auf die euch gestellte Frage zum Ausdruck kommen.
 
-Das Protokoll kann jederzeit **bis zum 09. Februar 2024** (Ende der Vorlesungszeit) per E-Mail (ggb@informatik.uni-kiel.de) bei mir als PDF eingereicht werden. 
+Das Poster wird in der letzten (Doppel-)Sitzung **am 06. Februar 2024** vorgestellt. Dafür stehen jeder Kleingruppe 10 Minuten zur Verfügung ihre Ergebnisse zu präsentieren. Das Zeitlimit ist strikt.
+
+#### Hinweise zur Peer Review (für Informatiker_innen)
+
+**Aufgabenstellung:** Euch wird am Tag der Posterpräsentation eine andere Gruppe zugewiesen. Schreibt eine kurze "Kritik" des vorgestellten Posters. Diese Kritik sollte in der Tendenz positiv, wertschätzend und konstruktiv sein, d.h. Möglichkeiten der Verbesserung aufzeigen. Versucht dafür nachvollziehbare Kriterien der Bewertung zu finden. Berücksichtigt sowohl den Vortrag, wie auch das erstellte "Poster". Die Peer Review sollte die Möglichkeit bieten die kritisierten Punkte in der Ausarbeitung zu berücksichtigen.
+
+Das Protokoll ist **bis spätestens zum 29. Februar 2024** per E-Mail (ggb@informatik.uni-kiel.de) bei mir als PDF einzureichen.
 
 Weitere Formalia:
 
-* 500 Wörter (+/- 20%), etwa eine Seite
+* 300 Wörter (+/- 20%), etwas weniger als eine DIN A4-Seite. Bitte gebt die Anzahl der Wörter am Ende des Dokuments an.
+* Name, stu-Mailadresse
+* Unterschriebene Eigenständigkeitserklärung
+* Falls externe Quellen oder Literatur verwendet wurden, müssen diese gemäß eines üblichen Zitationsstandards (APA, IEEE, ACM, etc.) angegeben werden
+* Falls ChatGPT o. ä. verwendet wurden: Umfang und Prompts angeben (ich rate von der Verwendung ab, da es sich um eine Reflexion der eigenen Erfahrungen mit dem Tool handeln soll)
+
+Für eine ausreichende (oder bessere) Arbeit
+
+* Besitzt der eingereichte Text eine klare Struktur
+* Wurde eine Rechtschreib- und Grammatikprüfung durchgeführt
+* Der Text wertschätzend und konstruktiv verfasst
+* Ein "problematischer" Aspekt der Posterpräsentation identifziert
+
+Eine gute (oder bessere) Arbeit
+
+* Ist verständlich geschrieben und besitzt einen deutlichen, roten Faden
+* Mehrere verbesserungswürdie Aspekte der Posterpräsentation identiziert
+* Lösungsmöglichkeiten für die Aspekte benannt
+
+#### Hinweise zum Werkstattbericht (für Informatiker_innen)
+
+**Aufgabenstellung:** Schreibt einen Werkstattbericht über eines der Tools, das für die drei Bereiche Distant, Deep und Close Reading vorgestellt wurden. Sucht euch dafür ein eigenes Textbeispiel, das mit Heinrich Blücher (oder Hannah Arendt) in Verbindung steht (von oder über ihn/sie) und reflektiert anschließend die Verwendung des Tools: Wie hat sich die Verwendung gestaltet? Was habt ihr herausgefunden bzw. welche Fragen sind offengeblieben? Was sind generell die Limitationen und Möglichkeiten des verwendeten Tools?
+
+Das Protokoll kann jederzeit **bis zum 09. Februar 2024** (Ende der Vorlesungszeit) per E-Mail (ggb@informatik.uni-kiel.de) bei mir als PDF eingereicht werden.
+
+Weitere Formalia:
+
+* 500 Wörter (+/- 20%), etwa eine DIN A4-Seite. Bitte gebt die Anzahl der Wörter am Ende des Dokuments an.
 * Name, stu-Mailadresse
 * Unterschriebene Eigenständigkeitserklärung
 * Falls externe Quellen oder Literatur verwendet wurden, müssen diese gemäß eines üblichen Zitationsstandards (APA, IEEE, ACM, etc.) angegeben werden
@@ -120,6 +153,10 @@ Eine gute (oder bessere) Arbeit
 * Reflektiert euren fachlichen Hintergrund als Informatiker:in bei der Verwendung des Tools
 * Bezieht die fachliche Expertise eines Mitstudierenden aus der Philosophie mit ein (bspw. bei der Auswahl des Textes, der Entwicklung einer Fragestellung, der Reflexion des eigenen Hintergrunds)
 * Bezieht Erkenntnisse aus den Seminargesprächen mit ein
+
+#### Hinweise zur Ausarbeitung (für Informatiker_innen)
+
+**Aufgabenstellung:** folgt...
 
 
 ## Sitzung am 24.10.
