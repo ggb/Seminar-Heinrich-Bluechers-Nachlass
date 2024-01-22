@@ -951,7 +951,7 @@ Diese Sitzung beschäftigt sich mit den geisteswissenschaftlichen Grundlagen von
 
 Gayatri Chakravorty Spivak (\*1942)
 
-![Gayatri_Spivak_on_Subversive_Festival.jpg](.attachments.565954312/Gayatri_Spivak_on_Subversive_Festival.jpg)
+![Gayatri_Spivak_on_Subversive_Festival.jpg](img/Gayatri_Spivak_on_Subversive_Festival.jpg)
   
 Eine der einflussreichsten Vertreterinnen des New Criticism und der literatur- und kulturtheoretischen Linie der postcolonial studies. Unter anderem berühmt geworden durch Ihre Übersetzung von Derridas De la Grammatologie ins Englische.
 
