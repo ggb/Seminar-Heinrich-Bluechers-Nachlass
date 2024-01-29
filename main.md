@@ -1011,3 +1011,211 @@ Diskutiert in Kleingruppen (zwei bis drei Personen) den wesentlichen Gedankengan
 ## Sitzung am 22.01.
 
 In dieser Woche bekommen wir Besuch von Britta Petersen vom Rechenzentrum, die uns einen Einblick in die FAIR-Prinzipien und weitere wichtige Überlegungen für das Forschungsdatenmanagement gibt. Außerdem sprechen wir über Werkzeuge für Netzwerkanalyse.
+
+### Forschungsdatenmanagement
+
+Der Vortrag von Britta Petersen muss(te) leider wegen Krankheit ausfallen. Die Unterlagen des Vortrags finden sich [hier](https://liascript.github.io/course/?https://raw.githubusercontent.com/BrittaP/eLBB4RDM/main/2024_infBSemDHI-01a_FAIR.md). 
+
+### Netzwerkanalyse
+
+**Beispiel 1:** [Exiled Philosophers](https://exiled-philosophers.streamlit.app/)
+
+**Beispiel 2:** Philosophen, die Heinrich Blücher in den [Sources of Creative Power Lectures of 1953/1954 (Fall Semester)](https://research.uni-leipzig.de/bluecherproject/#) zitiert.
+
+![Netzwerk der von Blücher zitierten Philosophen](img/bluecher_zuschnitt.png)
+
+#### Graphen
+
+Der folgende kleine Beispielgraph modelliert einen Zusammenhang aus dem Frühmittelalter und erklärt kurz die Grundprinzipien in der geisteswissenschaftlichen Domäne.
+
+![Beispielgraph (Quelle: Kuczera)](img/Beispielgraph.png)
+
+Der Beispielgraph zeigt oben einen Knoten (engl. Node) vom Typ (engl. Label) Person mit der Eigenschaft (engl. Property) Name. Diese hat den Wert “Karl der Große”. Links unten ist ein weiter Knoten vom Typ Person mit dem Namen “Einhard”. Rechts unten ist ein Knoten vom Typ Buch und dem Titel “Vita Karoli Magni” abgebildet. Die Kanten (engl. Edges) geben an, dass Karl der Große Einhard kannte, Einhard ca. 828-830 das Buch “Vita Karoli Magni” schrieb und Karl der Große in dem Buch vorkommt.
+
+Knoten und Kanten können also noch zusätzliche Eigenschaften besitzen, in denen weitere Informationen gespeichert sind. Diese Eigenschaften sind spezifisch für die jeweiligen Knotentypen. So sieht man in der Abbildung, dass die beiden Knoten vom Typ Person jeweils noch die Eigenschaft Namen haben, deren Wert dann die Namen der Person angibt, während der Knoten vom Typ Buch die Eigenschaft Titel trägt, in dem der Titel des Buches abgespeichert wird.
+
+Der wirkliche Mehrwert bei Graphdatenbanken ergibt sich aus gerichteten (also Verbinungen mit einer Richtung) und transitiven Beziehungen. Hat A eine direkte Kante zu B und B eine direkte Kante zu C dann ist A nicht direkt sondern transitiv mit C verbunden. Gerade wenn ein Graph sehr viele verschiedene solcher transitiven Verbindungen hat, lassen sich Muster und Verbindungen identifizieren, die in relationalen Modellen oft unentdeckt bleiben. Darüber hinaus bietet der Graph eine optimale Ausgangslage für anschließende Netzwerkanalyse des gesamten Graphen oder ausgewählter Subgraphen. War es in den digitalen Geisteswissenschaften bis vor einigen Jahren noch höchste Priorität überhaupt digitale Forschungsdaten bereitzustellen ist es heute die Herausforderung Daten in ihrem Kontext zu erfassen. Hierfür lassen sich Graphdatenbanken hervorragend nutzen.
+
+Quelle: [Andreas Kuczera: Graphentechnologien in den digitalen Geisteswissenschaften. (https://kuczera.github.io/Graphentechnologien)](https://kuczera.github.io/Graphentechnologien)
+
+##### Umwandlung unserer TEI in Netzwerkdaten
+
+Der folgende Python-Code liest aus den TEI-Annotationen, die ihr im Rahmen des Deep Reading-Blocks mit dem TEI Publisher erstellt habt, die semantisch relevanten tags `placeName`, `persName`, `orgName` und `term` aus. Das Ergebnis wird zunächst in einer Liste von Tripeln (mit dem eindeutigen Geonames bzw. GND-ID, dem tag-Namen, sowie dem Inhalt) abgelegt.
+
+Aus diesen Daten werden in einem zweiten Verarbeitungsschritt Netzwerkdaten generiert: Dazu wird davon ausgegangen, dass alle Auszeichnungen, die benachbart zueinander im Text vorkommen, eine Verbindung miteinander haben. *Benachbart* ist dabei durch ein *Fenster* definiert, in welchem Abstand die Auszeichnungen zueinander vorkommen: Dieses ist unten fünf Einträge groß, lässt sich aber durch die Änderung des entsprechenden Parameters anpassen.
+
+Das Script schreibt für jedes TEI-Dokument zwei CSV-Dokumente in das Ausgabeverzeichnis: Eine Liste mit den Informationen zu allen Knoten und eine weitere Liste mit den Informationen zu allen Verknüpfungen. 
+
+
+```python
+import pandas as pd
+import xml.etree.ElementTree as ET
+
+def extract_semantic_annotations(xml_string):
+    annotations = []
+    
+    # Parse XML 
+    root = ET.fromstring(xml_string)
+
+    # Definiere die semantisch wertvollen Tags
+    valid_tags = ['placeName', 'persName', 'term', 'orgName']
+
+    # Durchsuche das XML-Dokument nach den gewünschten Tags
+    for elem in root.iter():
+        # Der Namespace wird nicht benötigt und kann weg
+        tag = elem.tag.replace("{http://www.tei-c.org/ns/1.0}", "")
+        if tag in valid_tags:
+            # Extrahiere den Tag-Namen und den Inhalt und füge sie zur Liste hinzu
+            tag_name = tag
+            content = elem.text.strip() if elem.text is not None else ""
+            ref_attribute = elem.get('ref', None)
+            annotations.append((ref_attribute, tag_name, content))
+
+    return annotations
+
+def read_and_extract(path):
+    with open(path, 'r') as reader:
+        result = extract_semantic_annotations(reader.read())
+        return result
+
+def create_neighbors(ids, n=5):
+    neighbors = []
+
+    for i in range(len(ids) - n + 1):
+        current_id = ids[i]
+
+        for j in range(1, n):
+            neighbors.append((current_id, ids[i + j]))
+
+    return neighbors
+    
+def write_graph_data(source_path, target_path):
+    result = read_and_extract(source_path)
+    nodes = set(result)
+    nodes_df = pd.DataFrame(nodes, columns=["id", "tag", "label"])
+    nodes_df.to_csv(target_path + "_nodes.csv", index=False)
+
+    edges = create_neighbors([id for (id, _, _) in result])
+    edges = set(edges)
+    edges_df = pd.DataFrame(edges, columns=["source", "target"])
+    edges_df.to_csv(target_path + "_edges.csv", index=False)
+
+write_graph_data("data/lecture1.tei.xml", "output/lecture1")
+write_graph_data("data/lecture2.tei.xml", "output/lecture2")
+write_graph_data("data/lecture3.tei.xml", "output/lecture3")
+write_graph_data("data/lecture9.tei.xml", "output/lecture9")
+```
+
+#### Analyse mit Gephi
+
+[Gephi](https://gephi.org/) ist eine Open-Source-Software für die Visualisierung und Analyse von Netzwerken. Entwickelt von einem internationalen Team von Entwicklern, bietet Gephi eine benutzerfreundliche Plattform für die Darstellung von komplexen Beziehungen und Strukturen in Netzwerken. Die Software ist besonders nützlich für die Analyse von sozialen Netzwerken, biologischen Netzwerken, Finanztransaktionen, und anderen Systemen, bei denen die Interaktionen zwischen Elementen wichtig sind.
+
+Die Hauptfunktionen von Gephi umfassen die Möglichkeit, Netzwerke zu importieren, zu visualisieren und zu analysieren. Benutzer können die Darstellung von Knoten und Kanten anpassen, statistische Metriken berechnen, Cluster identifizieren, und komplexe Muster in den Daten erkennen. Gephi eignet sich sowohl für Forscher im Bereich der Netzwerkanalyse als auch für Praktiker, die visuelle Darstellungen nutzen, um Muster und Einsichten in komplexen Netzwerken zu gewinnen.
+
+Auf der Website [forText.net](https://fortext.net/routinen/lerneinheiten/netzwerkanalyse-mit-gephi) gibt es eine umfangreiche und sehr gute Lerneinheit zur Netzwerkanalyse mit Gephi, die anhand eines Beispiels aus den Literaturwissenschaften die Möglichkeiten von Netzwerkanalysen und den Umgang mit der Software Gephi erläutert.
+
+Aus dieser Lerneinheit stammen die folgenden beiden Videos:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FbZvRy6SbAo?si=95k0Pwnq7zVL70Tf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kQFsy_StbK8?si=96pq5ZrJb3bs8cLI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+#### Analyse mit Python
+
+Das folgende Script erstellt eine Netzwerkvisualisierung aus den Annotationsdaten.
+
+```python
+import pandas as pd
+import networkx as nx
+import matplotlib.pyplot as plt
+
+import matplotlib 
+matplotlib.use('TKAgg') # Work-around für Windows, fkt. evtl. auch ohne
+
+#
+#
+# Erstelle das Netzwerk
+
+# Lade die Daten aus den CSV-Dateien
+nodes = pd.read_csv("output/lecture1_nodes.csv")
+edges = pd.read_csv("output/lecture1_edges.csv")
+
+# Erstelle einen leeren gerichteten Graphen mit networkx
+graph = nx.DiGraph()
+
+# Füge Knoten zum Graphen hinzu
+for _, node in nodes.iterrows():
+    graph.add_node(node['id'], label=node['label'], tag=node['tag'])
+
+# Füge Kanten zum Graphen hinzu
+for _, edge in edges.iterrows():
+    graph.add_edge(edge['source'], edge['target'])
+
+# Berechne die Betweenness Centrality
+betweenness_centrality = nx.betweenness_centrality(graph)
+
+#
+#
+# Visualisiere den Graphen
+
+# Knotenfarben basierend auf dem 'tag'-Attribut
+node_colors = {'term': '#fbb4ae', 
+               'persName': '#b3cde3', 
+               'placeName': '#ccebc5', 
+               'orgName': '#decbe4'}
+colors = [node_colors[data['tag']] for node, data in graph.nodes(data=True)]
+
+# Knotendicke basierend auf der Betweenness Centrality
+sizes = [betweenness_centrality[node] * 4000 + 100 for node in graph.nodes]
+
+# SpringLayout für den Graphen mit erhöhter Abstoßung der Knoten erstellen
+pos = nx.spring_layout(graph, k=2.0, iterations=100)
+
+# Netzwerk zeichnen lassen
+nx.draw(graph, 
+        pos=pos,
+        with_labels=True, 
+        labels=nx.get_node_attributes(graph, 'label'), 
+        node_size=sizes, 
+        node_color=colors, 
+        font_size=10, 
+        font_color='black')
+
+# Speichere die Visualisierung als PNG
+plt.savefig('graph_visualization.png', format='png')
+
+# Zeige die Visualisierung 
+import matplotlib.pyplot as plt
+plt.show()
+```
+
+##### Noch mehr Python
+
+Wie sieht ein soziales Netzwerk der Charaktere in der Fantasy Roman-Reihe "The Witcher" aus? Das folgende Video zeigt, wie man mit Hilfe von Python (und insbesondere den Bibliotheken SpaCy und networkx) eine Netzwerkanalyse und -visualisierung der Charaktere und ihrer Beziehungen untereinander erstellen kann. 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fAHkJ_Dhr50?si=eNJMXLammPWW7EDe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+## Sitzung am 30.01.
+
+### Concept Maps
+
+> "**Concepts are the building blocks of thoughts.** Consequently, they are crucial to such psychological processes as categorization, inference, memory, learning, and decision-making. This much is relatively uncontroversial. But the nature of  concepts—the kind of things concepts are—and the constraints that govern a theory of concepts have been the subject of much debate. […] Just as thoughts are composed of concepts, many concepts are themselves **complex entities that are composed of other concepts** or more basic representational components." [(Margolis and Laurence, 2021)](https://plato.stanford.edu/entries/concepts/)
+
+![Die relationale Struktur des Begriffs "Säugetier"](img/verweisstruktur.png)
+
+#### "Regeln" der Concept Map
+
+![Eine Concept Map von Concept Maps](img/concept_map-concept_map.png "English Wikipedia user Vicwood40, CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>, via Wikimedia Commons")
+
+* Knoten sind mit Begriffen (Substantive), Kanten mit Verbindungswörtern ((Hilfs-)Verben) versehen, so dass sich die Verbindung zwischen zwei Knoten wie eine Aussage lesen lässt: Concept Maps – represent – organized knowledge
+* Hierarchischer Aufbau: vom Hauptkonzept an der Wurzel ausgehend werden die Konzepte zu den Blättern hin immer spezifischer
+* Concept Maps sind keine (!) Bäume, sondern verfügen über Querverbindungen, die sich auch über verschiedene Ebenen der Map hinweg erstrecken können
+* Es dürfen bzw. sollen auch konkrete Gegenstände oder Ereignisse (sprich Beispiele) in einer Concept Map enthalten sein
+
+#### Sinn und Zweck
+
+* Begriffe sind **Verweisungsgefüge** anderer Begriffe (s. o.): Concept Maps verdeutlichen diese Eigenschaft
+* Dadurch wird es leichter über Begriffsdifferenzierungen zu sprechen und die Nuancen unterschiedlicher Begriffsprägungen zu erfassen: CMs sind **Werkzeuge zur Kommunikation von Ideen**
+* Eigentlich stammen CMs aus der Lerntheorie (vgl. Novak and Godwin, 1984), d. h. sie eignen sich hervorragend dazu, um komplexe Sachverhalte zu erfassen und zu memorieren
