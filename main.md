@@ -156,7 +156,33 @@ Eine gute (oder bessere) Arbeit
 
 #### Hinweise zur Ausarbeitung (für Informatiker_innen)
 
-**Aufgabenstellung:** folgt...
+**Aufgabenstellung:** Verfasst eine kurze, wissenschaftliche Ausarbeitung einer Fragestellung zu Heinrich Blüchers "Why and How We Study Philosophy", die mit Methoden der digitalen Geisteswissenschaften beantwortet wird. Die Ausarbeitung sollte eine Einleitung mit Motivation, eine Darstellung des Hintergrunds und Forschungskontexts, eine Vorstellung und Begründung der Methodik, die Ergebnisse und Diskussion eurer Untersuchung, sowie einen kurzen Abschluss und Ausblick beinhalten. Eure Untersuchung und Ausarbeitung dürfen alle Materialien, die ihr im Laufe des Semesters erarbeitet hat, verwenden (insb. dürft ihr auch eure Posterpräsentation weiter ausarbeiten). 
+
+Die Ausarbeitung kann bis zum **31. März 2024** (Ende des Semesters) per E-Mail (ggb@informatik.uni-kiel.de) bei mir als PDF eingereicht werden.
+
+Weitere Formalia:
+
+* 3 - 4 Seiten im zweispaltigen [ACM-Template](https://www.acm.org/publications/proceedings-template), bevorzugt in LaTeX ([Overleaf](https://www.rz.uni-kiel.de/de/angebote/software/overleaf/overleaf))
+* Name, stu-Mailadresse
+* Unterschriebene Eigenständigkeitserklärung
+* Externe Quellen sind gemäß der ACM-Zitierweise anzugeben; das Literaturverzeichnis zählt nicht zur Gesamtlänge
+* Falls ChatGPT o. ä. verwendet wurden: Umfang und Prompts angeben (zählt nicht zur Gesamtlänge)
+* Die Arbeit kann auf Deutsch oder Englisch verfasst werden
+
+Für eine ausreichende (oder bessere) Arbeit
+
+* Besitzt der eingereichte Text eine klare Struktur
+* Ist verständlich geschrieben und besitzt einen deutlichen, roten Faden
+* Wurde eine Rechtschreib- und Grammatikprüfung durchgeführt
+* Baut auf den Diskussionen und Ergebnissen des Seminars und/oder der Posterpräsentation auf
+* Reflektiert das eigene Vorgehen und zeigt Vor- und Nachteile auf
+
+Eine gute (oder bessere) Arbeit
+
+* Leistet einen Beitrag, der erkennbar über die Ergebnisse des Seminars und/oder der Posterpräsentation hinausgeht
+* Bezieht Literatur ein, die über das hinausgeht, was im Seminar erwähnt/verwendet wurde
+* Zeigt ein hohes und kritisches Verständnis der vewendeten Methoden
+* Reflektiert den informatischen und philosophischen (natürlich weniger umfangreich) Beitrag für die Digital Humanities
 
 
 ## Sitzung am 24.10.
@@ -1219,3 +1245,23 @@ Wie sieht ein soziales Netzwerk der Charaktere in der Fantasy Roman-Reihe "The W
 * Begriffe sind **Verweisungsgefüge** anderer Begriffe (s. o.): Concept Maps verdeutlichen diese Eigenschaft
 * Dadurch wird es leichter über Begriffsdifferenzierungen zu sprechen und die Nuancen unterschiedlicher Begriffsprägungen zu erfassen: CMs sind **Werkzeuge zur Kommunikation von Ideen**
 * Eigentlich stammen CMs aus der Lerntheorie (vgl. Novak and Godwin, 1984), d. h. sie eignen sich hervorragend dazu, um komplexe Sachverhalte zu erfassen und zu memorieren
+
+#### Beispiel: CM und Close Reading
+
+Das folgende Beispiel zeigt anhand von Mary Midgleys Aufsatz "Artificial Intelligence and Creativity", wie sich Concept Maps für die Texterschließung im Close Reading nutzen lassen:
+
+![Mary Midgleys "Artificial Intelligence and Creativity" als Concept Map](img/midgley_cm.png)
+
+## Sitzung am 06.02.
+
+In dieser Sitzung werden die Posterpräsentationen durch die Kleingruppen vorgestellt. 
+
+**Gruppe 1:** Recogito und named entity recognition, am Beispiel des Wikipedia Eintrags von Hannah Arendt
+
+**Gruppe 2:** Inwiefern ist der Freiheitsbegriff bei Blücher durch die Denkrichtungen der Kriegs-/Nachkriegszeit (Nihilismus, Totalitarismus, Demokratie, Kommunismus) geprägt?
+
+**Gruppe 3:** Wie steht Blücher zu der Frage, ob man Philosophie lehren kann, anhand von Kant und Hegel
+
+**Gruppe 4:** Welches Hindernis, das Religion für die Entwicklung seines Freiheitsbegriffs darstellt, erachtet Blücher als bedeutender?
+
+**Gruppe 5:** Warum "müssen" wir philosophieren?
